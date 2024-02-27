@@ -26,4 +26,7 @@ class ModelTestCase(TestCase):
         self.user = User.objects.create(username='testuser', email='test@example.com', password='password123')
 
     def CreateTeam(slef):
-        self.team = Team.objects.create(teamName='Test Team', captain=self.user)
+        self.team = Team.objects.create(teamName='Test Team', captain='testuser')
+
+    def CreateTeam(slef):
+        self.team = Team.objects.create(teamName='Test Team', captain='testuser')
