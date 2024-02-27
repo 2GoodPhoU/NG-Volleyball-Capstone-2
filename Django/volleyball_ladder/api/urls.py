@@ -7,5 +7,4 @@ urlpatterns = [
     path('Divisons', DivisonsView.as_view()),
     path('MatchTable', MatchTableView.as_view()),
     path('CourtSchedule', CourtScheduleView.as_view())
-    print("help")
 ]
