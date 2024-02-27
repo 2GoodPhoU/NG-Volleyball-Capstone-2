@@ -5,6 +5,7 @@ from .serializers import UserSerializer
 
 # Create your views here.
 
-class UserView(generics.APIView):
+class UserView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    
