@@ -5,6 +5,6 @@ from .serializers import UserSerializer,TeamSerializer,DivisonsSerializer
 from .serializers import MatchTableSerializer,CourtScheduleSerializer
 # Create your views here.
 
-class UserView(generics.APIView):
+class UserView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
