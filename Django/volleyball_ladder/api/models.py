@@ -20,12 +20,17 @@ class Team(models.Model):
     publicProfile = models.ImageField(null=True)
     users = models.ManyToManyField(User,related_name='team_player')#teamPlayer table
 
-class Divisons(models.Model):
-    id = models.AutoField(primary_key=True)
-    teamName = models.ForeignKey(Team,on_delete=models.CASCADE)
+class Division(models.Model):
+    name = models.CharField(max_length=55,primary_key=True)
+    admin = models.ForeignKey('User', on_delete=models.CASCADE)
     publicProfile = models.ImageField(null=True)
-    position = models.IntegerField()
-    admin = models.ForeignKey(User,on_delete=models.CASCADE)
+    
+class TeamInDivision(models.Model):
+    division = models.ForeignKey(Division, on_delete=models.CASCADE)
+    team = models.ForeignKey('Team', on_delete=models.CASCADE)
+    position = models.PositiveIntegerField()
+    class Meta:
+        unique_together = ('division', 'team')
 
 class MatchTable(models.Model):
     id = models.AutoField(primary_key=True)
@@ -33,17 +38,16 @@ class MatchTable(models.Model):
     team2Name = models.ForeignKey(Team,related_name='team2_matches',on_delete=models.CASCADE)
     ref = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     countDown = models.DateField(null=True)
-    location = models.ForeignKey('CourtSchedule',on_delete=models.CASCADE,null=True)
+    #location = models.ForeignKey('CourtSchedule',on_delete=models.CASCADE,null=True)
     team1Wins = models.IntegerField(default=0)
     team2Wins = models.IntegerField(default=0)
 
 #https://stackoverflow.com/questions/28712848/composite-primary-key-in-django
+#make sure match always has a value
 class CourtSchedule(models.Model):
-    class Meta:#composite primary key
-        unique_together = (('location','id'),)
+    id = models.AutoField(primary_key=True)
+    match = models.ForeignKey(MatchTable, on_delete=models.CASCADE, related_name='court_schedules', default=None)
     location = models.CharField(max_length=128)
-    id = models.ForeignKey(MatchTable,on_delete=models.CASCADE,primary_key=True)
-
     startTime = models.DateTimeField()
     endTime = models.DateTimeField()
     matchDetail = models.CharField(max_length=255,blank=True) 
