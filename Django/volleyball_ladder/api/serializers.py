@@ -4,7 +4,7 @@ from .models import User, Team, Division,TeamInDivision, MatchTable,CourtSchedul
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'profilePic','email','password')
+        fields = ('username', 'profilePic','email','password','phoneNumber')
 
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,7 +24,7 @@ class DivisionSerializer(serializers.ModelSerializer):
 class MatchTableSerializer(serializers.ModelSerializer):
     class Meta:
         model = MatchTable
-        fields = ('id','team1Name','team2Name','ref','coutDown','team1Wins','team2Wins')
+        fields = ('id','team1Name','team2Name','ref','coutDown','team1Wins','team2Wins','status')
 
 class CourtScheduleSerializer(serializers.ModelSerializer):
     class Meta:
