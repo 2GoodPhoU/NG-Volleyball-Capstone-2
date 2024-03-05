@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import User, Team, Divisons,MatchTable,CourtSchedule
-from .serializers import UserSerializer,TeamSerializer,DivisonsSerializer
+from .models import User, Team, Division,TeamInDivision,MatchTable,CourtSchedule
+from .serializers import UserSerializer,TeamSerializer,DivisionSerializer,TeamInDivisionSerializer
 from .serializers import MatchTableSerializer,CourtScheduleSerializer
 # Create your views here.
 
@@ -13,9 +13,9 @@ class TeamView(generics.CreateAPIView):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
 
-class DivisonsView(generics.CreateAPIView):
-    queryset = Divisons.objects.all()
-    serializer_class = DivisonsSerializer
+class DivisionView(generics.CreateAPIView):
+    queryset = Division.objects.all()
+    serializer_class = DivisionSerializer
 
 class MatchTableView(generics.CreateAPIView):
     queryset = MatchTable.objects.all()
@@ -24,3 +24,7 @@ class MatchTableView(generics.CreateAPIView):
 class CourtScheduleView(generics.CreateAPIView):
     queryset = CourtSchedule.objects.all()
     serializer_class = CourtScheduleSerializer
+
+class TeamInDivisionView(generics.CreateAPIView):
+    queryset = TeamInDivision.objects.all()
+    serializer_class = TeamInDivisionSerializer
