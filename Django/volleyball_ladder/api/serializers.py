@@ -19,7 +19,7 @@ class DivisonsSerializer(serializers.ModelSerializer):
 class MatchTableSerializer(serializers.ModelSerializer):
     class Meta:
         model = MatchTable
-        fields = ('id','team1Name','team2Name','ref','coutDown','location','team1Wins','team2Wins')
+        fields = ('id','team1Name','team2Name','ref','countDown','location','team1Wins','team2Wins')
 
 class CourtScheduleSerializer(serializers.ModelSerializer):
     class Meta:
