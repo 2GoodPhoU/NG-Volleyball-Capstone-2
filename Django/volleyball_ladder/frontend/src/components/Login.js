@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Input from "@mui/material/Input";
+import ResponsiveAppBar from "./ResponsiveAppBar";
 
 export default class LoginPage extends Component{
     constructor(props){
