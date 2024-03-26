@@ -1,2 +1,2 @@
 Set-ExecutionPolicy Unrestricted -Scope Process
-.\Scripts\activate
+Ladder\venv\Scripts\activate

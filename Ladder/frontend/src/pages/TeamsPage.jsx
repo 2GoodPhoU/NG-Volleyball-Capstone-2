@@ -35,9 +35,9 @@ const TeamPage = () => {
         ))}
       </div>
 
-      <button className="btn btn-primary" type="submit">
-          Create Team
-        </button>
+      <Link to="/createteam">
+        <button className="btn btn-primary">Create Team</button>
+      </Link>
     </div>
   );
 };

@@ -4,8 +4,7 @@ from rest_framework import generics, permissions, viewsets
 from rest_framework.response import Response
 from .models import User
 from .serializers import *
-#Hi me
-# Create your views here.
+
 class UserListView(viewsets.ViewSet):
     queryset = User.objects.all()
     serializer_class = UpdateUserSerializer

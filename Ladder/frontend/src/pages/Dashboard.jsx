@@ -1,8 +1,9 @@
-// Assuming you have a Redux store with user information available
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 
 const Dashboard = () => {
   const [userTeams, setUserTeams] = useState([]);
@@ -27,12 +28,16 @@ const Dashboard = () => {
       <h1 className='main__title'> {userInfo.first_name} Teams</h1>
         <div className="division-container">
             {userTeams.map((team) => (
-            <div key={team.id} className="division-box" style={{ color: 'var(--color-white)' }}>
-                Team: {team.name} <br />
-                Captain: {team.captain_username} 
-            </div>
+              <div key={team.id} className="division-box" >
+                <Link to={`/team/${team.id}`} style={{ color: 'var(--color-white)' }}>
+                  <strong>{team.name}</strong> - Created by: {team.captain_username}
+                </Link>
+              </div>
             ))}
         </div>
+        <Link to="/createteam">
+        <button className="btn btn-primary">Create Team</button>
+      </Link>
     </div>
   );
 };

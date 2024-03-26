@@ -8,6 +8,6 @@ urlpatterns = [
     path('',include('team.urls')),
     path('',include('users.urls')),
     path('',include('divisions.urls'))
-
-
 ]
+
+

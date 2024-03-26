@@ -17,6 +17,7 @@ import DivisionsPage from "./pages/DivisionsPage";
 import DivisionDetailsPage from "./pages/DivisionDetails";
 import TeamPage from "./pages/TeamsPage";
 import TeamDetailsPage from "./pages/TeamDetails";
+import JoinDivisionPage from "./pages/JoinDivision";
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
           <Route path="/division/:name" element={<DivisionDetailsPage />} />
           <Route path="/allteams" element={<TeamPage />} />
           <Route path="/team/:id" element={<TeamDetailsPage />} />
+          <Route path="/joindivision" element={<JoinDivisionPage />} />
+
+
 
         </Routes>
       </Router>

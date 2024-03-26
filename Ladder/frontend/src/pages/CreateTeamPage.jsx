@@ -1,11 +1,17 @@
 // pages/CreateTeamPage.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux'; // Assuming you have a Redux store
+import { useSelector } from 'react-redux'; 
+import { useNavigate} from 'react-router-dom'
+import { toast } from 'react-toastify'
+
+
 
 const CreateTeamPage = () => {
   const [name, setName] = useState('');
   const { userInfo } = useSelector((state) => state.auth);
+  const navigate = useNavigate()
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,16 +23,19 @@ const CreateTeamPage = () => {
         {
           headers: {
             'Content-Type': 'application/json',
-            // Add your authentication headers if needed
-            // Authorization: `Bearer ${yourAuthToken}`,
+
           },
         }
       )
       .then((response) => {
         console.log('Team created successfully:', response.data);
+        toast.success("Team created successfully")
+
+        navigate("/dashboard")
       })
       .catch((error) => {
         console.error('Error creating team:', error);
+        toast.error("Error creating team")
         // Handle errors
       });
   };
