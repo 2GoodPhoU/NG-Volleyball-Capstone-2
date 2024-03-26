@@ -8,6 +8,12 @@ class Division(models.Model):
     name = models.CharField(max_length=55,primary_key=True)
     admin = models.ForeignKey(User, on_delete=models.CASCADE)
     publicProfile = models.ImageField(upload_to='profile_images', blank= True, null=True)
+    class Status(models.TextChoices):
+       INPROGRESS = 'i', 'inProgress'
+       NotStarted = 'n', 'notStated'
+       VOID = 'v', 'void'
+       FINISHED = 'f', 'finished'
+    status = models.CharField(max_length=1,choices=Status.choices,null=True)
     
     def __str__(self):
         return self.name

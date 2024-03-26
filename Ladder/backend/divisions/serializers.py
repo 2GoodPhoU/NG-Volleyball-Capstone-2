@@ -12,7 +12,7 @@ class DivisionSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Division
-        fields = ('name','admin','publicProfile', 'admin_email')
+        fields = ('name','admin','publicProfile', 'admin_email','status')
 
     def get_admin_email(self, obj):
         return obj.admin.email
