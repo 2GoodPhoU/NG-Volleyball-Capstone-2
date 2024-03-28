@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     'users',
     'team',
-    'divisions'
+    'divisions',
+    'match'
 ]
 
 MIDDLEWARE = [

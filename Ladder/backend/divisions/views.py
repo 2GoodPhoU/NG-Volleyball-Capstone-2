@@ -3,7 +3,8 @@ from rest_framework.response import Response
 from rest_framework import viewsets, permissions, status
 
 from django.db.models import Count,Sum,Case,When,FloatField, F
-from .models import Division,TeamInDivision, Team, MatchTable
+from .models import Division,TeamInDivision, Team
+from match.models import MatchTable
 from .serializers import DivisionSerializer,TeamInDivisionSerializer
 from rest_framework.decorators import action
 
@@ -63,7 +64,7 @@ class Tree:
     #should work as passbyReference
     def assignPosition(self, team_list):
         # Reorganize the team list based on win rates
-        team_list.sort(key=lambda team: self.get_win_rate(team.name))
+        #team_list.sort(key=lambda team: self.get_win_rate(team.team))
 
         #assigning their positions
         for Team in team_list:
@@ -75,6 +76,10 @@ class Tree:
                 self.positionNum += 1
                 self.available = 0
                 self.leafAmount *= 2
+    def fixTree(self,team_list):# goes through entire tree to fix
+        #keeps intergrety of tree without changing it based on winrate
+        #need to reset the variables in trees first
+        self.assignPosition(team_list)
 
         
 class TeamInDivisionView(viewsets.ViewSet):
@@ -145,7 +150,7 @@ class TeamInDivisionView(viewsets.ViewSet):
         tree = Tree()
         
         tree.assignPosition(TeamList)
-        for team in TeamList #saves each teamObject to the database
+        for team in TeamList: #saves each teamObject to the database
             team.save()
 
         return Response({'message': 'Positions assigned successfully.'})

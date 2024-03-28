@@ -28,18 +28,18 @@ class TeamInDivision(models.Model):
     def __str__(self):
         return f"{self.team} in {self.division}"
     
-    def clean(self):
-        # Check if there's any other team in the same division with the same position
-        if TeamInDivision.objects.filter(division=self.division, position=self.position).exclude(pk=self.pk).exists():
-            raise ValidationError("A team in this division already occupies this position.")
+    # def clean(self):
+    #     # Check if there's any other team in the same division with the same position
+    #     if TeamInDivision.objects.filter(division=self.division, position=self.position).exclude(pk=self.pk).exists():
+    #         raise ValidationError("A team in this division already occupies this position.")
         
-    def save(self, *args, **kwargs):
-        if not self.position:
-            # Calculate the next possible position for the team in the division
-            max_position = TeamInDivision.objects.filter(division=self.division).aggregate(Max('position'))['position__max']
-            if max_position is None:
-                max_position = 0
-            self.position = max_position + 1
+    # def save(self, *args, **kwargs):
+    #     if not self.position:
+    #         # Calculate the next possible position for the team in the division
+    #         max_position = TeamInDivision.objects.filter(division=self.division).aggregate(Max('position'))['position__max']
+    #         if max_position is None:
+    #             max_position = 0
+    #         self.position = max_position + 1
 
-        super().save(*args, **kwargs)
+    #     super().save(*args, **kwargs)
         
