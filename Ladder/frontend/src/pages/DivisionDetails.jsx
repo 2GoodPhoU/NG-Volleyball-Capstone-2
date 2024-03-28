@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+//import './container.css' ;
+//import { ranktable } from 'components';
+import ranktable from '../components/ranktable'
+import CustomizedTables from '../components/ranktable';
 
 
 const DivisionDetailsPage = () => {
@@ -51,11 +55,79 @@ const DivisionDetailsPage = () => {
           </li>
         ))}
       </ul>
-
       
       <Link to="/joindivision">
         <button className="btn btn-primary">Join Division</button>
       </Link>
+  
+          <CustomizedTables />
+
+      <article id="container">
+    
+<section>
+    <div>Player 1</div>
+    <div>Player 2</div>
+    <div>Player 3</div>
+    <div>Player 4</div>
+    <div>Player 5</div>
+    <div>Player 6</div>
+    <div>Player 7</div>
+    <div>Player 8</div>
+</section>
+
+<div class="connecter">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<div class="line">
+    <div>
+    </div><div>
+    </div><div>
+    </div><div>
+    </div>
+</div>
+
+<section id="quarterFinals">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</section>
+
+<div class="connecter" id="conn2">
+    <div></div>
+    <div></div>
+</div>
+
+<div class="line" id="line2">
+    <div></div>
+    <div></div>
+</div>
+
+<section id="semiFinals">
+    <div></div>
+    <div></div>
+</section>
+
+<div class="connecter" id="conn3">
+    <div></div>
+</div>
+
+<div class="line" id="line3">
+    <div></div>
+</div>
+
+<section id="final">
+<div></div>
+</section>
+
+</article>
+
+
+
     </div>
   );
 };
